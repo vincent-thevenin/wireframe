@@ -26,15 +26,15 @@ def unScaleRGB(ipt):
     return opt
 
 def normalize(ipt, mean, std):
-    ipt[:][:][0] = (ipt[:][:][0] - mean[0]) / std[0]
-    ipt[:][:][1] = (ipt[:][:][1] - mean[1]) / std[1]
-    ipt[:][:][2] = (ipt[:][:][2] - mean[2]) / std[2]
+    ipt[:][:][0] = (ipt[:][:][0] - mean[0].item()) / std[0].item()
+    ipt[:][:][1] = (ipt[:][:][1] - mean[1].item()) / std[1].item()
+    ipt[:][:][2] = (ipt[:][:][2] - mean[2].item()) / std[2].item()
     return ipt
 
 def unNormalize(ipt, mean, std):
-    ipt[:][:][0] = (ipt[:][:][0] * std[0]) + mean[0]
-    ipt[:][:][1] = (ipt[:][:][1] * std[1]) + mean[1]
-    ipt[:][:][2] = (ipt[:][:][2] * std[2]) + mean[2]
+    ipt[:][:][0] = (ipt[:][:][0] * std[0].item()) + mean[0].item()
+    ipt[:][:][1] = (ipt[:][:][1] * std[1].item()) + mean[1].item()
+    ipt[:][:][2] = (ipt[:][:][2] * std[2].item()) + mean[2].item()
     return ipt
 
 def randomFlip(ipt, xml):

@@ -54,11 +54,11 @@ class stackHourglassTrainer():
             self.optimizer.step()
             runTime = time.time() - start
 
-            avgLoss = (avgLoss * i + loss.data[0]) / (i + 1)
+            avgLoss = (avgLoss * i + loss.item()) / (i + 1)
 
-            log = 'Epoch: [%d][%d/%d] Time %1.3f Data %1.3f Err %1.4f\n' % (epoch, i, len(trainLoader), runTime, dataTime, loss.data[0])
+            log = 'Epoch: [%d][%d/%d] Time %1.3f Data %1.3f Err %1.4f\n' % (epoch, i, len(trainLoader), runTime, dataTime, loss.item())
             self.logger['train'].write(log)
-            self.progbar.update(i, [('Time', runTime), ('Loss', loss.data[0])])
+            self.progbar.update(i, [('Time', runTime), ('Loss', loss.item())])
 
             if i <= self.opt.visTrain:
                 visImg.append(inputData)
@@ -98,11 +98,11 @@ class stackHourglassTrainer():
 
             runTime = time.time() - start
 
-            avgLoss = (avgLoss * i + loss.data[0]) / (i + 1)
+            avgLoss = (avgLoss * i + loss.item()) / (i + 1)
 
-            log = 'Epoch: [%d][%d/%d] Time %1.3f Data %1.3f Err %1.4f\n' % (epoch, i, len(valLoader), runTime, dataTime, loss.data[0])
+            log = 'Epoch: [%d][%d/%d] Time %1.3f Data %1.3f Err %1.4f\n' % (epoch, i, len(valLoader), runTime, dataTime, loss.item())
             self.logger['val'].write(log)
-            self.progbar.update(i, [('Time', runTime), ('Loss', loss.data[0])])
+            self.progbar.update(i, [('Time', runTime), ('Loss', loss.item())])
 
             if i <= self.opt.visTest:
                 visImg.append(inputData.cpu())
