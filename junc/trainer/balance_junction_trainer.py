@@ -188,23 +188,23 @@ class Trainer():
                 #torch.nn.utils.clip_grad_norm(self.model.parameters(), 1.0)
                 self.optimizer.step()
             Loss.update(
-                loss.data[0],
+                loss.item(),
                 inp.size(0)
             )
             LossJuncConf.update(
-                junc_conf_loss.data[0],
+                junc_conf_loss.item(),
                 inp.size(0)
             )
             LossBinConf.update(
-                bin_conf_loss.data[0],
+                bin_conf_loss.item(),
                 inp.size(0)
             )
             LossJuncRes.update(
-                junc_res_loss.data[0],
+                junc_res_loss.item(),
                 inp.size(0)
             )
             LossBinRes.update(
-                bin_res_loss.data[0],
+                bin_res_loss.item(),
                 inp.size(0)
             )
 
