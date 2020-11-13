@@ -39,7 +39,7 @@ def parse():
                         type=int,        help='mini-batch size')
     parser.add_argument('--saveEpoch',        default=10,
                         type=int,        help='saving at least # epochs')
-    parser.add_argument('--testOnly',         default=False,
+    parser.add_argument('--testOnly',         default=True,
                         type=str2bool,   help='Run the test to see the performance')
     parser.add_argument('--barwidth',         default=50,
                         type=int,        help='Progress bar width')
