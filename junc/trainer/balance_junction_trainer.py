@@ -73,7 +73,7 @@ class Trainer():
         for epoch in range(1, self.opt.max_epochs + 1):
             self.lr_scheduler.step()
             self.step(epoch, train_loader)
-            torch.save(self.model, self.saveDir / 'model_{}.pth'.format(epoch))
+            torch.save(self.model.state_dict(), self.saveDir / 'model_{}.pth'.format(epoch))
             if val_loader is not None:
                self.step(epoch, val_loader, is_val=True, split='val')
 

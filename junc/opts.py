@@ -160,7 +160,8 @@ class opts():
             H['decodeFeats'] = opt.decodeFeats
             H['focus_size'] = opt.focus_size
             H['loss_weights'] = [float(x) for x in opt.loss_weights.split(',')]
-            H['steppoints'] = [int(x for x in opt.lr_steps.split(','))]
+
+            H['steppoints'] = [int(x) for x in opt.lr_steps.split(',')]
             self.opt.hype = H
 
         args = dict((name, getattr(self.opt, name)) for name in dir(self.opt)
