@@ -24,7 +24,7 @@ import pickle
 # safe dictionary copy
 from copy import deepcopy as dc
 random.seed(0)
-import ref
+import junc.ref
 
 # transform annotation to array format
 def ann_to_array(H, d, max_len=1):

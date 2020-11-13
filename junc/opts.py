@@ -1,12 +1,13 @@
 import argparse
 import os
-import ref
 import json
+import junc.ref as ref
 
 class opts():
     def __init__(self):
         self.parser = argparse.ArgumentParser()
     def init(self):
+        print('parsed')
         self.parser.add_argument('--create_dataset', dest='create_dataset',
                                  action='store_true',
                                  help="create dataset")

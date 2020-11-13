@@ -9,9 +9,9 @@ from io import BytesIO
 import numpy as np
 import itertools
 
-import ref
-from model.networks.generate_cell_anchors import generate_anchors, generate_bin_anchors
-from datasets.utils import resize_theta
+import junc.ref as ref
+from junc.model.networks.generate_cell_anchors import generate_anchors, generate_bin_anchors
+from junc.datasets.utils import resize_theta
 
 
 class Plotter(object):
