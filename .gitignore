@@ -14,3 +14,11 @@ data/*
 reference/*
 final
 final/*
+output/*
+result/*
+
+*.zip
+
+*.npy
+
+*.log

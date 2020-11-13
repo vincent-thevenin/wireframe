@@ -105,8 +105,9 @@ class Wireframe():
     def load_junc(self, in_=None, theta_thresh=None, suffix='.pkl'):
         imgname = in_ if in_ is not None else self.imgname
         junc_thresh = int(self.junc_thresh * 10)
-        junc_path = self.junc_dir / str(junc_thresh)
-        pklfile = join(junc_path, imgname[:-4] + '_5.pkl')
+        #junc_path = self.junc_dir / str(junc_thresh) #DEBUG
+        #pklfile = join(junc_path, imgname[:-4] + '_5.pkl') #DEBUG
+        pklfile = imgname #DEBUG
 
         with open(pklfile, 'rb') as fn:
             try:
@@ -388,12 +389,14 @@ class Wireframe():
     def showLines(self):
         # save lines
         np_lines = np.array(self.lines)
-        sio.savemat(self.wireframe_dir / (self.imgname[:-4] + '.mat'), {'lines':np_lines})
+        #sio.savemat(self.wireframe_dir / (self.imgname[:-4] + '.mat'), {'lines':np_lines}) #DEBUG
+        sio.savemat(('wireframe_res.mat'), {'lines':np_lines}) #DEBUG
 
         # save visualization
         img = np.copy(self.img)
         im = addLines(img, self.lines, display_=False, color=(0, 255, 0), thickness=2)
-        imwrite(self.wireframe_dir / self.imgname, im)
+        #imwrite(self.wireframe_dir / self.imgname, im) #DEBUG
+        imwrite("wireframe_res.png", im) #DEBUG
 
 
 def calcAssignment(th1, th2, dist =7.5):
@@ -817,7 +820,7 @@ def main():
                 for in_ in tqdm(imgnames))  # max_len default to 1.
         else:
             for in_ in tqdm(imgnames):
-                process_wireframe(in_, junc_thresh, line_thresh, debug=debug)
+                process_wireframe(exp_name, in_, junc_thresh, line_thresh, debug=debug)
 
 if __name__ == '__main__':
     main()
